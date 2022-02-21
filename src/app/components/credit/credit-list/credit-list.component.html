@@ -1,0 +1,34 @@
+<div *ngIf="credits.length>=1 && !loading" class="container" style="margin: 5%;min-height: 350px;">
+  <table class="table">
+    <thead>
+      <tr>   
+        <th scope="col">Apply Time</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let credit of credits">       
+        <td>{{credit.creationTime |date:'medium'}}</td>
+        <td *ngIf="credit.creditAmount==0"><span class="badge bg-warning text-dark">Denied</span></td>
+        <td *ngIf="credit.creditAmount!=0">{{credit.creditAmount |currency:'TRY'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="credits.length<1 && !loading" class="card text-white bg-danger mb-10" style="max-width: 56rem; margin: 10%;">
+  <div class="card-header">Nothing Found</div>
+  <div class="card-body">
+    <h5 class="card-title">We are Sorry</h5>
+    <p class="card-text">We did not found any loan application</p>
+  </div>
+</div>
+
+<div *ngIf="loading" class="card text-white bg-primary mb-10" style="max-width: 56rem; margin: 10%;">
+  <div class="card-header">Customers Loading</div>
+  <div class="card-body">
+    <div class="spinner-grow text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+

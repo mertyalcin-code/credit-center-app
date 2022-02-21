@@ -1,0 +1,43 @@
+<a class="btn btn-info" href="/panel" style="margin: 1%;">Panel</a>
+<!-- customer table-->
+<div class="container" style=" margin-top: 3%">
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Search" [(ngModel)]="searchTerm"
+      style="margin:3%;max-width: 300px;">
+    <a class="btn btn-primary" href="panel/customer/add"><i class="fas fa-plus"></i></a>
+  </div>
+
+  <table class="table  table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nationality No</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Monthly Salary</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let customer of customers|filter:searchTerm">
+      <tr>
+        <td>{{customer.id}}</td>
+        <td>{{customer.nationalityNo}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.monthlySalary | currency:'TRY'}}</td>
+        <td>{{customer.phoneNumber}}</td>
+
+        <td>
+          <a class="btn btn-primary" href='{{"/panel/customer/update/"+customer.id}}'><i class="fas fa-pen"></i></a>
+          <button *ngIf="!deleteLoading" class="btn btn-danger" (click)="delete(customer.id)"><i
+              class="fas fa-trash-alt"></i></button>
+          <button *ngIf="deleteLoading" class="btn btn-danger">
+            <div class="spinner-grow text-secondary spinner-grow-sm " role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
+        </td>
+    </tbody>
+  </table>
+</div>

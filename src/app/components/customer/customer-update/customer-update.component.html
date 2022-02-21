@@ -1,0 +1,58 @@
+<a class="btn btn-info" href="/panel/customer/list" style="margin: 2%;">Back To List</a>
+<!--city update form-->
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Customer Update</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="customerUpdateForm">
+          <div class="mb-3">
+            <label for="nationalityNo">Nationality No</label>
+            <div class="form-group">
+              <input type="number" id="nationalityNo" formControlName="nationalityNo" class="form-control"
+                placeholder="Nationality No" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="firstName">First Name</label>
+            <div class="form-group">
+              <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                placeholder="first Name" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastName">Last Name</label>
+            <div class="form-group">
+              <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                placeholder="Last Name" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="monthlySalary"> Monthly Salary</label>
+            <div class="form-group">
+              <input type="number" id="monthlySalary" formControlName="monthlySalary" class="form-control"
+                placeholder="Monthly Salary" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nationalityNo">Phone Number (5xx xxx xx xx)</label>
+            <div class="form-group">
+              <input type="number" id="phoneNumber" formControlName="phoneNumber" class="form-control"
+                placeholder="Phone Number" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button *ngIf="!loading" class="btn btn-fill btn-primary" (click)="update()"
+          [disabled]="customerUpdateForm.invalid">Update</button>
+        <button *ngIf="loading" class="btn btn-primary" type="button" disabled>
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

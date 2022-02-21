@@ -1,0 +1,15 @@
+<form [formGroup]="inquiryForm">
+  <div class="mb-3">
+    
+    <div class="form-group">
+      <input type="text" id="nationalityNo" formControlName="nationalityNo" class="form-control"
+        placeholder="Nationality No" />
+    </div>
+  </div>
+</form>
+<button *ngIf="!loading" class="btn btn-fill btn-primary" (click)="navigateToCreditList()"
+[disabled]="inquiryForm.invalid">Search</button>
+<button *ngIf="loading" class="btn btn-primary" type="button" disabled>
+<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+Sending...
+</button>
